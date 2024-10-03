@@ -1,0 +1,7 @@
+.border {
+  border: 0.063rem solid var(--color-border);
+
+  &-bottom {
+    border-bottom: 0.063rem solid var(--color-border);
+  }
+}

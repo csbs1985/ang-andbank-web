@@ -1,0 +1,31 @@
+<article class="flex flex-col gap-4 p-4 py-8">
+  <h2 class="text-2xl uppercase font-bold"> Indicação <span class="color-primary text-2xl">AndBank</span> </h2>
+
+  @for (item of randonListRendaFixa; track $index) {
+  <div class="flex flex-col gap-2 card">
+    <p class="color-primary font-bold"> {{ item.descricao }} </p>
+
+    <div class="flex justify-between gap-4">
+      <div class="flex flex-col gap-2">
+        <p>Produto</p>
+
+        <p>Indexador</p>
+
+        <p>Investimento minimo</p>
+
+        <p>Vencimento</p>
+      </div>
+
+      <div class="flex flex-col gap-2 items-end">
+        <p> {{ item.tipoProduto.nome }} </p>
+
+        <p> {{ item.indexador.nome }} </p>
+
+        <p> {{ item.investimentoMinimo | currency: 'BRL' }} </p>
+
+        <p> {{ item.dataValidade | date: 'dd/MM/yyyy' }} </p>
+      </div>
+    </div>
+  </div>
+  }
+</article>
