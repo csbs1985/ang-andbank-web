@@ -1,4 +1,4 @@
-import { DatePipe, NgFor } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgFor } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { IRendaFixa } from '../../models/renda-fixa.interfcace';
 import { NumberPipe } from '../../pipes/number.pipe';
@@ -7,7 +7,7 @@ import { RendaFixaService } from '../../services/renda-fixa.service';
 @Component({
   selector: 'app-panel',
   standalone: true,
-  imports: [NgFor, NumberPipe, DatePipe],
+  imports: [NgFor, NumberPipe, DatePipe, CurrencyPipe],
   templateUrl: './panel.component.html'
 })
 export class PanelComponent implements OnInit {

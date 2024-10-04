@@ -23,9 +23,9 @@
             <td>{{ item.id }}</td>
             <td>{{ item.descricao }}</td>
             <td>{{ item.dataValidade | date: 'dd/MM/yyyy' }}</td>
-            <td>{{ item.investimentoMinimo }}</td>
-            <td>{{ item.tipoProduto.nome }}</td>
-            <td>{{ item.indexador.nome }}</td>
+            <td>{{ item.investimentoMinimo | currency: 'BRL' }}</td>
+            <td>{{ item.tipoProduto!.nome }}</td>
+            <td>{{ item.indexador!.nome }}</td>
           </tr>
           }
         } @else {

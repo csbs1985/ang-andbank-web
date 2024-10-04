@@ -39,4 +39,54 @@ export class RendaFixaService {
       })
     );
   }
+
+  postRendaFixa(payload: object): void {
+    // const rendaFixa = this.rendaFixa$.value;
+    // {
+    //   id: 0,
+    //   descricao: rendaFixa.descricao,
+    //   dataValidade: rendaFixa.dataValidade,
+    //   investimentoMinimo: rendaFixa.investimentoMinimo,
+    //   tipoProdutoId: rendaFixa.tipoProdutoId,
+    //   indexadorId: rendaFixa.indexadorId,
+    // };
+
+    // this._apiService.postRendaFixa(payload)
+    //   .subscribe(response => {
+    //     if (response) {
+    //       console.log('Item created successfully!');
+    //     }
+    //   }, error => {
+    //     console.log('Error creating item:', error);
+    //   });
+  }
+
+  // putRendaFixa(rendaFixa: object) {
+  //  const payload = this.fillPayload(rendaFixa);
+  //
+  //   this._apiService.putRendaFixa(id, payload)
+  //     .subscribe(response => {
+  //       if (response.success) {
+  //         console.log('Item edited successfully!');
+  //       } else {
+  //         console.log('Error editing item:', response.error);
+
+  //       }
+  //     }, error => {
+  //       console.log('Error editing item:', error);
+  //     });
+  // }
+
+  // deleteRendaFixa(id: number) {
+  //   this._apiService.deleteRendaFixa(id)
+  //     .subscribe(response => {
+  //       if (response.success) {
+  //         console.log('Item deleted successfully!');
+  //       } else {
+  //         console.log('Error deleting item:', response.error);
+  //       }
+  //     }, error => {
+  //       console.log('Error deleting item:', error);
+  //     });
+  // }
 }

@@ -11,7 +11,7 @@
       <app-indication [content]="(rendaFixaList | async) ?? []" class="w-1/3"></app-indication>
     </div>
 
-    @if(_rendaFixaFilter){<app-panel [content]="_rendaFixaFilter"></app-panel>}
+    @if(_rendaFixaFilter.length > 0){<app-panel [content]="_rendaFixaFilter"></app-panel>}
   </div>
   }
 </section>

@@ -1,13 +1,16 @@
 import { NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgxCurrencyDirective } from 'ngx-currency';
+import { IIndexador } from '../../models/indexador.interface';
 import { IRendaFixa } from '../../models/renda-fixa.interfcace';
+import { ITipoProduto } from '../../models/tipo-produto.interface';
 import { RendaFixaService } from '../../services/renda-fixa.service';
 
 @Component({
   selector: 'app-item',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule],
+  imports: [NgIf, ReactiveFormsModule, NgxCurrencyDirective],
   templateUrl: './item.component.html'
 })
 export class ItemComponent implements OnInit {
@@ -33,6 +36,43 @@ export class ItemComponent implements OnInit {
     }
   };
 
+  protected _tipoProdutoList: ITipoProduto[] = [
+    {
+      id: 4, nome: "LCA"
+    },
+    {
+      id: 1,
+      nome: "CDB"
+    },
+    {
+      id: 2,
+      nome: "Debênture"
+    },
+    {
+      id: 3,
+      nome: "Tesouro direto"
+    }
+  ];
+
+  protected _indexadorList: IIndexador[] = [
+    {
+      id: 1,
+      nome: "CDI"
+    },
+    {
+      id: 3,
+      nome: "IPCA +"
+    },
+    {
+      id: 4,
+      nome: "Pós fixado"
+    },
+    {
+      id: 2,
+      nome: "SELIC"
+    }
+  ];
+
   ngOnInit(): void {
     this.createForm();
     this.getRendaFixaItem();
@@ -55,13 +95,25 @@ export class ItemComponent implements OnInit {
     });
   }
 
+  protected postRendaFixa(): void {
+    const payload = {
+      descricao: this.formRendaFixa.get('descricao'),
+      dataValidade: this.formRendaFixa.get('dataValidade'),
+      investimentoMinimo: this.formRendaFixa.get('investimentoMinimo'),
+      tipoProduto: this.formRendaFixa.get('tipoProduto'),
+      indexador: this.formRendaFixa.get('indexador')
+    }
+
+    this._rendaFixaService.postRendaFixa(payload);
+  }
+
   private fillForm(): void {
     this.formRendaFixa.patchValue({
       descricao: this._rendaFixaItem.descricao,
       dataValidade: this._rendaFixaItem.dataValidade,
       investimentoMinimo: this._rendaFixaItem.investimentoMinimo,
-      tipoProduto: this._rendaFixaItem.tipoProduto.nome,
-      indexador: this._rendaFixaItem.indexador.nome
+      tipoProduto: this._rendaFixaItem.tipoProduto!.nome,
+      indexador: this._rendaFixaItem.indexador!.nome
     });
   }
 

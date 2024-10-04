@@ -40,11 +40,15 @@ export class HomeComponent implements OnInit {
   }
 
   protected filter(value: string): void {
-    this._rendaFixaService.rendaFixaList$
-      .pipe(map((list: IRendaFixa[]) =>
-        list.filter((item: IRendaFixa) => item.descricao.toLowerCase().includes(value.toLowerCase()))))
-      .subscribe((filteredArray: IRendaFixa[]) => {
-        this._rendaFixaFilter = filteredArray;
-      });
+    if (value.length > 2) {
+      this._rendaFixaService.rendaFixaList$
+        .pipe(map((list: IRendaFixa[]) =>
+          list.filter((item: IRendaFixa) => item.descricao.toLowerCase().includes(value.toLowerCase()))))
+        .subscribe((filteredArray: IRendaFixa[]) => {
+          this._rendaFixaFilter = filteredArray;
+        });
+    } else {
+      this._rendaFixaFilter = [];
+    }
   }
 }

@@ -2,12 +2,12 @@ import { IIndexador } from "./indexador.interface";
 import { ITipoProduto } from "./tipo-produto.interface";
 
 export interface IRendaFixa {
-  id: number;
+  id?: number;
   descricao: string;
   dataValidade: string;
   investimentoMinimo: number;
   tipoProdutoId: number;
-  tipoProduto: ITipoProduto;
+  tipoProduto?: ITipoProduto;
   indexadorId: number;
-  indexador: IIndexador;
+  indexador?: IIndexador;
 }

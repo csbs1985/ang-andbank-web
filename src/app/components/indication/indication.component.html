@@ -17,9 +17,9 @@
       </div>
 
       <div class="flex flex-col gap-2 items-end">
-        <p> {{ item.tipoProduto.nome }} </p>
+        <p> {{ item.tipoProduto!.nome }} </p>
 
-        <p> {{ item.indexador.nome }} </p>
+        <p> {{ item.indexador!.nome }} </p>
 
         <p> {{ item.investimentoMinimo | currency: 'BRL' }} </p>
 
