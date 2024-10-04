@@ -1,5 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { BehaviorSubject, map, Observable } from "rxjs";
+import { IPostPayload } from "../models/post-payload.interfcace";
 import { IRendaFixa } from "../models/renda-fixa.interfcace";
 import { ApiService } from "./api.service";
 
@@ -40,26 +41,13 @@ export class RendaFixaService {
     );
   }
 
-  postRendaFixa(payload: object): void {
-    // const rendaFixa = this.rendaFixa$.value;
-    // {
-    //   id: 0,
-    //   descricao: rendaFixa.descricao,
-    //   dataValidade: rendaFixa.dataValidade,
-    //   investimentoMinimo: rendaFixa.investimentoMinimo,
-    //   tipoProdutoId: rendaFixa.tipoProdutoId,
-    //   indexadorId: rendaFixa.indexadorId,
-    // };
 
-    // this._apiService.postRendaFixa(payload)
-    //   .subscribe(response => {
-    //     if (response) {
-    //       console.log('Item created successfully!');
-    //     }
-    //   }, error => {
-    //     console.log('Error creating item:', error);
-    //   });
+  postRendaFixa(payload: IPostPayload): Promise<boolean> {
+    return this._apiService.postRendaFixa(payload).toPromise()
+      .then(() => true)
+      .catch(() => false);
   }
+
 
   // putRendaFixa(rendaFixa: object) {
   //  const payload = this.fillPayload(rendaFixa);
