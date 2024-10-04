@@ -37,7 +37,7 @@ export class ApiService {
       'X-Test-Key': this.apiKey
     });
 
-    return this._http.patch(`${this.baseUrl}/renda-fixa`, payload, { headers: headers });
+    return this._http.put(`${this.baseUrl}/renda-fixa`, payload, { headers: headers });
   }
 
   deleteRendaFixa(id: number): Observable<Object> {

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { NgxCurrencyDirective } from 'ngx-currency';
 import { IIndexador } from '../../models/indexador.interface';
 import { IPostPayload } from '../../models/post-payload.interfcace';
+import { IPutPayload } from '../../models/put-payload.interfcace';
 import { IRendaFixa } from '../../models/renda-fixa.interfcace';
 import { ITipoProduto } from '../../models/tipo-produto.interface';
 import { RendaFixaService } from '../../services/renda-fixa.service';
@@ -71,9 +72,8 @@ export class ItemComponent implements OnInit {
   private getRendaFixaItem(): void {
     this._rendaFixaService.rendaFixa$.subscribe((value: IRendaFixa) => {
       this._rendaFixaItem = value;
+      this.fillForm();
     });
-
-    this.fillForm();
   }
 
   protected postRendaFixa(): void {
@@ -90,6 +90,35 @@ export class ItemComponent implements OnInit {
         this.message = "Renda fixa criada com sucesso!";
         this.cancelRendaFixa();
       } else this.message = "Erro ao criar nova renda fixa, tente novamente";
+    });
+  }
+
+  protected putRendaFixa(): void {
+    const payload: IPutPayload = {
+      id: this._rendaFixaItem.id!,
+      descricao: this.formRendaFixa.get('descricao')?.value,
+      dataValidade: this.formRendaFixa.get('dataValidade')?.value,
+      investimentoMinimo: this.formRendaFixa.get('investimentoMinimo')?.value,
+      tipoProdutoId: parseInt(this.formRendaFixa.get('tipoProdutoId')?.value),
+      indexadorId: parseInt(this.formRendaFixa.get('indexadorId')?.value)
+    }
+
+    this._rendaFixaService.putRendaFixa(payload).then((result: boolean) => {
+      this.message = result
+        ? "Renda fixa alterada com sucesso!"
+        : "Erro ao alterar renda fixa, tente novamente";
+    });
+  }
+
+
+  protected deleteRendaFixa(): void {
+    const id = this._rendaFixaItem.id!
+
+    this._rendaFixaService.deleteRendaFixa(id).then((result: boolean) => {
+      if (result) {
+        this.message = "Renda fixa deletada com sucesso!";
+        this.cancelRendaFixa();
+      } else this.message = "Erro ao deletar renda fixa, tente novamente";
     });
   }
 

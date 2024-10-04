@@ -53,9 +53,9 @@
 
         @if(_rendaFixaItem.id){
 
-        <button type="button">Editar</button>
+        <button type="button" (click)="putRendaFixa()">Editar</button>
 
-        <button type="button">Excluir</button>
+        <button type="button" (click)="deleteRendaFixa()">Excluir</button>
         } @else {
         <button type="button" (click)="postRendaFixa()">Criar</button>
         }

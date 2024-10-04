@@ -41,40 +41,21 @@ export class RendaFixaService {
     );
   }
 
-
   postRendaFixa(payload: IPostPayload): Promise<boolean> {
     return this._apiService.postRendaFixa(payload).toPromise()
       .then(() => true)
       .catch(() => false);
   }
 
+  putRendaFixa(payload: IPostPayload): Promise<boolean> {
+    return this._apiService.putRendaFixa(payload).toPromise()
+      .then(() => true)
+      .catch(() => false);
+  }
 
-  // putRendaFixa(rendaFixa: object) {
-  //  const payload = this.fillPayload(rendaFixa);
-  //
-  //   this._apiService.putRendaFixa(id, payload)
-  //     .subscribe(response => {
-  //       if (response.success) {
-  //         console.log('Item edited successfully!');
-  //       } else {
-  //         console.log('Error editing item:', response.error);
-
-  //       }
-  //     }, error => {
-  //       console.log('Error editing item:', error);
-  //     });
-  // }
-
-  // deleteRendaFixa(id: number) {
-  //   this._apiService.deleteRendaFixa(id)
-  //     .subscribe(response => {
-  //       if (response.success) {
-  //         console.log('Item deleted successfully!');
-  //       } else {
-  //         console.log('Error deleting item:', response.error);
-  //       }
-  //     }, error => {
-  //       console.log('Error deleting item:', error);
-  //     });
-  // }
+  deleteRendaFixa(id: number): Promise<boolean> {
+    return this._apiService.deleteRendaFixa(id).toPromise()
+      .then(() => true)
+      .catch(() => false);
+  }
 }
