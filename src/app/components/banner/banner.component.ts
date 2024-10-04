@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { IRendaFixa } from '../../models/renda-fixa.interfcace';
 import { NumberPipe } from '../../pipes/number.pipe';
+import { RendaFixaService } from '../../services/renda-fixa.service';
 
 @Component({
   selector: 'app-banner',
@@ -8,5 +10,11 @@ import { NumberPipe } from '../../pipes/number.pipe';
   templateUrl: './banner.component.html'
 })
 export class BannerComponent {
-  @Input() total: number = 1000;
+  @Input() content: IRendaFixa[] = [];
+
+  private _rendaFixaService = inject(RendaFixaService);
+
+  protected onInputChange(value: string): void {
+    this._rendaFixaService.rendaFixaFilter$.next(value);
+  }
 }

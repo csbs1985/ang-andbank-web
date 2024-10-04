@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    label {
+      opacity: .6;
+      font-weight: bold;
+    }
+
+    input {
+      height: 3rem;
+      background-color: white;
+      padding: 0 1rem;
+    }
+  }
+}

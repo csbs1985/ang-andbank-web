@@ -1,0 +1,10 @@
+button {
+  background-color: var(--color-primary);
+  padding: 1rem;
+  color: white;
+  text-transform: uppercase;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}

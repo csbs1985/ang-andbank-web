@@ -1,0 +1,39 @@
+@if (_filterString) {
+  <article class="w-full flex flex-col gap-4 py-8">
+    <h2 class="text-2xl uppercase font-bold">
+      {{ content.length | number }} Resultado(s) para <span class="color-primary text-2xl">{{ _filterString }}</span>
+    </h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Descrição</th>
+          <th>Validade</th>
+          <th>Investimento Mínimo</th>
+          <th>Tipo Produto</th>
+          <th>Indexador</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @if (content.length > 0) {
+          @for (item of content; track $index) {
+          <tr (click)="selectRendaFixa(item)">
+            <td>{{ item.id }}</td>
+            <td>{{ item.descricao }}</td>
+            <td>{{ item.dataValidade | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ item.investimentoMinimo }}</td>
+            <td>{{ item.tipoProduto.nome }}</td>
+            <td>{{ item.indexador.nome }}</td>
+          </tr>
+          }
+        } @else {
+          <tr>
+            <td class="text-center" colspan="6">Produto não encontrado</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </article>
+}

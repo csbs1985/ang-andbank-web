@@ -18,7 +18,7 @@ export class IndicationComponent implements OnInit {
   }
 
   private getRegitersRandon(): void {
-    this.randonListRendaFixa = this.content
+    this.randonListRendaFixa = this.content!
       .concat([])
       .sort(() => Math.random() - 0.5)
       .slice(0, 3);

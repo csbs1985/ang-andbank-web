@@ -1,0 +1,50 @@
+<section class="w-full flex flex-col gap-8 py-8 card">
+  <h2 class="text-2xl uppercase font-bold">
+    {{ _rendaFixaItem.id ? 'Editar' : 'Criar' }}
+    <span class="color-primary text-2xl">Renda Fixa</span>
+  </h2>
+
+  <form [formGroup]="formRendaFixa" class="flex flex-col gap-8">
+    <div class="form-group w-full">
+      <label for="descricao">Descrição</label>
+      <input type="text" formControlName="descricao" name="descricao">
+    </div>
+
+    <div class="flex gap-8">
+      <div class="form-group w-1/2">
+        <label for="dataValidade">Vencimento</label>
+        <input type="text" formControlName="dataValidade" name="dataValidade">
+      </div>
+
+      <div class="form-group w-1/2">
+        <label for="investimentoMinimo">Investimento mínimo</label>
+        <input type="text" formControlName="investimentoMinimo" name="investimentoMinimo">
+      </div>
+    </div>
+
+    <div class="flex gap-8">
+      <div class="form-group w-1/2">
+        <label for="tipoProduto">Tipo de Produto</label>
+        <input type="text" formControlName="tipoProduto" name="tipoProduto">
+      </div>
+
+      <div class="form-group w-1/2">
+        <label for="indexador">Indexador</label>
+        <input type="text" formControlName="indexador" name="indexador">
+      </div>
+    </div>
+
+    <div class="flex gap-4 justify-end">
+      <button type="button" (click)="cancelRendaFixa()">Cancelar</button>
+
+      @if(_rendaFixaItem.id){
+
+      <button type="button">Editar</button>
+
+      <button type="button">Excluir</button>
+      } @else {
+      <button type="button">Criar</button>
+      }
+    </div>
+  </form>
+</section>
